@@ -1,0 +1,22 @@
+[package]
+name = "accesscontrol"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+author = "aremu malik"
+homepage = "https://github.com/malik672/open-stylus"
+repository = "https://github.com/malik672/open-stylus"
+keywords = ["arbitrum", "ethereum", "stylus", "alloy"]
+description = "access"
+
+[dependencies]
+alloy-primitives = "0.3.1"
+alloy-sol-types = "0.3.1"
+stylus-sdk = "0.4.2"
+wee_alloc = "0.4.5"
+thiserror = "1.0.56"
+clippy = "0.0.302"
+fmt = "0.1.0"
+
+[features]
+export-abi = ["stylus-sdk/export-abi"]
