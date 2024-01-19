@@ -18,7 +18,6 @@ sol_storage! {
         address owner;
         //flag to check if address has been set
         bool check;
-
     }
 }
 
@@ -53,9 +52,8 @@ sol! {
 }
 
 #[external]
-#[allow(non_snake_case)]
 impl Ownable {
-    pub fn onlyOwner(&self) -> Result<(), OwnableErrors> {
+    pub fn only_owner(&self) -> Result<(), OwnableErrors> {
         if *self.owner != msg::sender() {
             return Err(OwnableErrors::OwnableInvalidOwner(OwnableInvalidOwner {}));
         }
@@ -73,8 +71,8 @@ impl Ownable {
         Ok(())
     }
 
-    pub fn transferOwnership(&mut self, new_owner: Address) -> Result<(), OwnableErrors> {
-        self.onlyOwner()?;
+    pub fn transfer_ownership(&mut self, new_owner: Address) -> Result<(), OwnableErrors> {
+        self.only_owner()?;
 
         evm::log(OwnershipTransferred {
             previousOwner: msg::sender(),
