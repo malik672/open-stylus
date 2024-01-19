@@ -2,6 +2,8 @@
 //! Warning: this code has not been audited.
 //! Does not check for zero address as parameter
 
+extern crate alloc;
+use alloc::vec::Vec;
 use alloy_primitives::Address;
 use alloy_sol_types::{sol, SolError};
 use stylus_sdk::{
@@ -50,6 +52,8 @@ sol! {
     error AlreadyConstructed();
 }
 
+#[external]
+#[allow(non_snake_case)]
 impl Ownable {
     pub fn onlyOwner(&self) -> Result<(), OwnableErrors> {
         if *self.owner != msg::sender() {
@@ -65,7 +69,8 @@ impl Ownable {
         evm::log(SetOwner {
             owner: msg::sender(),
         });
-        Ok(self.owner.set(owner))
+        self.owner.set(owner);
+        Ok(())
     }
 
     pub fn transferOwnership(&mut self, new_owner: Address) -> Result<(), OwnableErrors> {
@@ -75,6 +80,8 @@ impl Ownable {
             previousOwner: msg::sender(),
             newOwner: Address(*new_owner),
         });
-        Ok(self.owner.set(new_owner))
+
+        self.owner.set(new_owner);
+        Ok(())
     }
 }
