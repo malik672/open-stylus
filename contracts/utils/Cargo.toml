@@ -1,0 +1,15 @@
+[package]
+name = "utils"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "utils"
+path = "lib.rs"
+
+
+[dependencies]
+alloy-primitives = "0.6.0"
+alloy-sol-types = "0.6.0"
+fmt = "0.1.0"
+stylus-sdk = "0.4.2"
