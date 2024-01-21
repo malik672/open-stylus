@@ -2,6 +2,12 @@
 name = "utils"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+author = "aremu malik"
+homepage = "https://github.com/malik672/open-stylus"
+repository = "https://github.com/malik672/open-stylus"
+keywords = ["arbitrum", "ethereum", "stylus", "alloy"]
+description = "access"
 
 [lib]
 name = "utils"
@@ -9,7 +15,7 @@ path = "lib.rs"
 
 
 [dependencies]
-alloy-primitives = "0.6.0"
 alloy-sol-types = "0.6.0"
 fmt = "0.1.0"
+mini-alloc = "0.4.2"
 stylus-sdk = "0.4.2"
