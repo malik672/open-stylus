@@ -6,3 +6,6 @@ pub mod Erc165;
 
 #[allow(non_snake_case)]
 pub mod Pausable;
+
+#[allow(non_snake_case)]
+pub mod Address;

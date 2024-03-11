@@ -1,14 +1,11 @@
-//! Rust implementation of the Inspector Interface.
+//! Rust implementation of the Pausable .
 //! Warning: this code has not been audited.
 //! Warning: Use at your risk
-
 extern crate alloc;
-use alloc::vec::Vec;
-use alloy_sol_types::{sol, SolError};
-use stylus_sdk::{
-    evm, msg,
-    stylus_proc::{external, sol_storage},
-};
+use alloc::{vec::Vec, string::ToString};
+use alloy_sol_types::sol;
+use stylus_sdk::stylus_proc::{external, sol_storage};
+
 
 sol_storage! {
     ///STORAGE
@@ -34,6 +31,22 @@ sol! {
 pub enum PausableErrors {
     EnforcedPaused(EnforcedPaused),
     ExpectedPause(ExpectedPause),
+}
+
+impl ExpectedPause {
+    fn encode(&self) -> Vec<u8> {
+        // Convert the error to a string and then to bytes
+        let error_str = "ExpectedPause".to_string();
+        error_str.into_bytes()
+    }
+}
+
+impl EnforcedPaused {
+    fn encode(&self) -> Vec<u8> {
+        // Convert the error to a string and then to bytes
+        let error_str = "EnforcedPaused".to_string();
+        error_str.into_bytes()
+    }
 }
 
 impl From<PausableErrors> for Vec<u8> {

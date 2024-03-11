@@ -7,7 +7,7 @@ author = "aremu malik"
 homepage = "https://github.com/malik672/open-stylus"
 repository = "https://github.com/malik672/open-stylus"
 keywords = ["arbitrum", "ethereum", "stylus", "alloy"]
-description = "access"
+description = "utilities"
 
 [lib]
 name = "utils"
@@ -19,3 +19,6 @@ alloy-sol-types = "0.6.0"
 fmt = "0.1.0"
 mini-alloc = "0.4.2"
 stylus-sdk = "0.4.2"
+
+[features]
+export-abi = ["stylus-sdk/export-abi"]
