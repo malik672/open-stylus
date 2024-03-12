@@ -58,7 +58,7 @@ impl From<PausableErrors> for Vec<u8> {
     }
 }
 
-#[external]
+// #[external]
 impl Pausable {
     pub fn paused(&self) -> Result<bool, PausableErrors> {
         Ok(self._paused.get())

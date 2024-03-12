@@ -9,3 +9,6 @@ pub mod Pausable;
 
 #[allow(non_snake_case)]
 pub mod Address;
+
+#[allow(non_snake_case)]
+pub mod Errors;

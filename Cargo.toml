@@ -7,7 +7,7 @@ edition = "2021"
 
 [workspace]
 members = [
-    "contracts/access",
+    "contracts/access", "contracts/finance",
     "contracts/utils",
 ]
 

@@ -1,5 +1,5 @@
 [package]
-name = "utils"
+name = "finance"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
@@ -7,10 +7,10 @@ author = "aremu malik"
 homepage = "https://github.com/malik672/open-stylus"
 repository = "https://github.com/malik672/open-stylus"
 keywords = ["arbitrum", "ethereum", "stylus", "alloy"]
-description = "utilities"
+description = "finance"
 
 [lib]
-name = "utils"
+name = "finance"
 path = "lib.rs"
 
 
