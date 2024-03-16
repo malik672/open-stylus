@@ -34,7 +34,7 @@ pub enum PausableErrors {
 }
 
 impl ExpectedPause {
-    fn encode(&self) -> Vec<u8> {
+   pub fn encode(&self) -> Vec<u8> {
         // Convert the error to a string and then to bytes
         let error_str = "ExpectedPause".to_string();
         error_str.into_bytes()
@@ -42,7 +42,7 @@ impl ExpectedPause {
 }
 
 impl EnforcedPaused {
-    fn encode(&self) -> Vec<u8> {
+   pub fn encode(&self) -> Vec<u8> {
         // Convert the error to a string and then to bytes
         let error_str = "EnforcedPaused".to_string();
         error_str.into_bytes()

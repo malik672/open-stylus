@@ -7,12 +7,17 @@ use alloc::{string::ToString, vec::Vec};
 use alloy_sol_types::sol;
 use stylus_sdk::{
     alloy_primitives::{Address, U256},
-    call::{self, delegate_call, static_call, transfer_eth, Call},
+    call::{ delegate_call, static_call, transfer_eth, Call},
     contract::balance,
     evm, msg,
     stylus_proc::{external, sol_storage}, types::AddressVM,
 };
 pub struct ADDRESSES;
+
+#[allow(dead_code)]
+fn not_implemented() {
+    todo!();
+}
 
 //ERRORS
 sol! {
@@ -40,8 +45,9 @@ impl From<AddressErrors> for Vec<u8> {
     }
 }
 
+
 impl ADDRESSES {
-    fn send_value(recipient: Address, amount: U256) -> Result<(), Errors> {
+    pub fn send_value(recipient: Address, amount: U256) -> Result<(), Errors> {
         if balance() < amount {
             return Err(Errors::InsufficientBalance(InsufficientBalance {
                 balance: balance(),
@@ -52,11 +58,11 @@ impl ADDRESSES {
         Ok(())
     }
 
-    fn function_call(target: Address, data: Vec<u8>) -> Result<(), Errors> {
+    pub fn function_call(target: Address, data: Vec<u8>) -> Result<(), Errors> {
         Self::function_call_with_value(target, data, U256::from(0))
     }
 
-    fn function_call_with_value(target: Address, data: Vec<u8>, value: U256) -> Result<(), Errors> {
+    pub fn function_call_with_value(target: Address, data: Vec<u8>, value: U256) -> Result<(), Errors> {
         if balance() < value {
             return Err(Errors::InsufficientBalance(InsufficientBalance {
                 balance: balance(),
@@ -67,19 +73,19 @@ impl ADDRESSES {
         Ok(())
     }
 
-    fn function_static_call(target: Address, data: Vec<u8>) -> Vec<u8> {
+    pub fn function_static_call(target: Address, data: Vec<u8>) -> Vec<u8> {
         //    let retdata = static_call(context, target, data.as_slice())?
         todo!()
     }
 
-    fn function_delegate_call(target: Address, data: Vec<u8>) -> Vec<u8> {
+    pub fn function_delegate_call(target: Address, data: Vec<u8>) -> Vec<u8> {
         
         // let return_data =unsafe { delegate_call(context, target, data.as_slice())};
         // return_data.unwrap();
         todo!()
     }
 
-    fn verify_call_result_from_target(target: Address, success: bool, data: Vec<u8>) -> Vec<u8> {
+    pub fn verify_call_result_from_target(target: Address, success: bool, data: Vec<u8>) -> Vec<u8> {
         if !success {
             panic!("call not successful");
         }else {
@@ -90,7 +96,7 @@ impl ADDRESSES {
         }
     }
 
-    fn verify_call_result(success: bool, data: Vec<u8>) -> Vec<u8> {
+    pub fn verify_call_result(success: bool, data: Vec<u8>) -> Vec<u8> {
         if !success {
             panic!("wrong");
         }else {
@@ -98,7 +104,7 @@ impl ADDRESSES {
         }
     }
 
-    fn _revert(data: Vec<u8>) -> Result<(), Errors>{
+    pub fn _revert(data: Vec<u8>) -> Result<(), Errors>{
         if data.len() > 0 {
             panic!("return data size should")
         }else {

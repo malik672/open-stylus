@@ -8,7 +8,7 @@ use stylus_sdk::stylus_proc::sol_storage;
 
 //STRUCTS
 sol_storage! {
-pub struct Erc165{
+  pub struct Erc165{
     bytes4 interfaceId;
   }
 }
